@@ -15,7 +15,7 @@
   \***********************/
 /***/ (() => {
 
-eval("console.log('hello, world!');//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvanMvYXBwLmpzIiwibmFtZXMiOlsiY29uc29sZSIsImxvZyJdLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vYXN0cmEtY2hpbGQvLi9zcmMvanMvYXBwLmpzP2NkMTgiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc29sZS5sb2coJ2hlbGxvLCB3b3JsZCEnKSJdLCJtYXBwaW5ncyI6IkFBQUFBLE9BQU8sQ0FBQ0MsR0FBRyxDQUFDLGVBQWUsQ0FBQyJ9\n//# sourceURL=webpack-internal:///./src/js/app.js\n");
+eval("//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sInNvdXJjZXMiOlsid2VicGFjazovL2FzdHJhLWNoaWxkLy4vc3JjL2pzL2FwcC5qcz9jZDE4Il0sInNvdXJjZXNDb250ZW50IjpbIiJdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuL3NyYy9qcy9hcHAuanMiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/js/app.js\n");
 
 /***/ }),
 
