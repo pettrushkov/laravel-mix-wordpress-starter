@@ -5,8 +5,13 @@ const themePath = '.';
 const resources = themePath + '/src';
 mix.setPublicPath(`${themePath}/assets`);
 
-mix.sass(`${resources}/scss/app.scss`, `${themePath}/assets/css`).sourceMaps();
-mix.js(`${resources}/js/app.js`, `${themePath}/assets/js`)
+mix.options({
+	processCssUrls: false // Process/optimize relative stylesheet url()'s. Set to false, if you don't want them touched.
+});
+
+mix.sourceMaps(false, 'source-map');
+mix.sass(`${resources}/scss/app.scss`, `${themePath}/assets/css`);
+mix.js(`${resources}/js/app.js`, `${themePath}/assets/js`);
 
 mix.browserSync({
     proxy: "http://veritaworld", // paste your local url

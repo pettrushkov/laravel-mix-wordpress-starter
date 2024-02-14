@@ -1,0 +1,18 @@
+h2 {
+	font-family: $ff-inter;
+	font-size: 24px;
+	margin-bottom: 24px;
+
+	@include mq(xl) {
+		font-size: 36px;
+	}
+}
+
+h3 {
+	font-size: 20px;
+	margin: 0 0 20px;
+
+	@include mq(xl) {
+		font-size: 24px;
+	}
+}

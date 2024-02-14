@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Theme dependencies.
  */
@@ -20,19 +19,19 @@ function load_theme_dependencies() {
 /**
  * Theme initalization.
  */
-add_action( 'init', 'init_theme' );
-function init_theme(){
+add_action('init', 'init_theme');
+function init_theme() {
 	// Remove extra styles and default SVG tags.
-	remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
-	remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+	remove_action('wp_enqueue_scripts', 'wp_enqueue_global_styles');
+	remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
 
-	load_theme_textdomain( 'theme_name', get_stylesheet_directory() . '/languages' );
+	load_theme_textdomain('theme_name', get_stylesheet_directory() . '/languages');
 
 	// Manage the document title - WordPress automatically add title
-	add_theme_support( 'title-tag' );
+	add_theme_support('title-tag');
 
 	// Enable post thumbnails.
-	// add_theme_support( 'post-thumbnails' );
+	add_theme_support('post-thumbnails');
 
 	// Custom image sizes.
 	// add_image_size( 'full-hd', 1920, 0, 1 );
@@ -41,24 +40,15 @@ function init_theme(){
 /**
  * Enqueue styles and scripts.
  */
-function inclusion_enqueue(){
+function inclusion_enqueue() {
 	// Remove Gutenberg styles on front-end.
-	if( ! is_admin() ){
-		wp_dequeue_style( 'wp-block-library' );
-		wp_dequeue_style( 'wp-block-library-theme' );
-		wp_dequeue_style( 'wc-blocks-style' );
+	if (!is_admin()) {
+		wp_dequeue_style('wp-block-library');
+		wp_dequeue_style('wp-block-library-theme');
+		wp_dequeue_style('wc-blocks-style');
 	}
 }
-add_action( 'wp_enqueue_scripts', 'inclusion_enqueue' );
-
-
-// Add svg support
-function cc_mime_types($mimes)
-{
-    $mimes['svg'] = 'image/svg+xml';
-    return $mimes;
-}
-add_filter('upload_mimes', 'cc_mime_types');
+add_action('wp_enqueue_scripts', 'inclusion_enqueue');
 
 
 // Add scripts and style
@@ -66,15 +56,22 @@ add_action('wp_enqueue_scripts', 'astra_child_enqueue_styles');
 function astra_child_enqueue_styles() {
 	// Random value to prevent caching.
 	// Change to some value on production, for example: '1.0.0'.
-	$ver_num = mt_rand();
+	// $ver_num = mt_rand();
 
 	wp_enqueue_style('myStyle', get_stylesheet_directory_uri() . '/assets/css/app.css');
-	wp_enqueue_script('myScript', get_stylesheet_directory_uri() . '/assets/js/app.js');
-	// wp_localize_script('mainScripts', 'ajaxObject', array(
-    //     'ajaxUrl' => admin_url('admin-ajax.php'),
-    //     'redirectUrl' => home_url(),
-    // ));
+	wp_enqueue_script('myScript', get_stylesheet_directory_uri() . '/assets/js/app.js', array('wp-i18n'));
+
+	//	$contact_form_success_fields = get_field( 'contact_form_success_fields', 'options' );
+
+	//	wp_localize_script( 'myScript', 'globalVars', array(
+//		'contactFormSuccessFields'     => $contact_form_success_fields,
+//		'redirectUrl' => home_url(),
+//	) );
 }
+
+// Remove autowrap lines in <p> tag in CF7 forms
+// add_filter('wpcf7_autop_or_not', '__return_false');
+
 
 
 
@@ -87,18 +84,18 @@ function astra_child_enqueue_styles() {
  *
  * @return string Pluralized word if quantity is not one, otherwise singular
  */
-function pluralize( $quantity, $singular, $plural = null ) {
-	if ( $quantity == 1 || ! strlen( $singular ) ) {
+function pluralize($quantity, $singular, $plural = null) {
+	if ($quantity == 1 || !strlen($singular)) {
 		return $singular;
 	}
-	if ( $plural !== null ) {
+	if ($plural !== null) {
 		return $plural;
 	}
 
-	$last_letter = strtolower( $singular[ strlen( $singular ) - 1 ] );
-	switch ( $last_letter ) {
+	$last_letter = strtolower($singular[strlen($singular) - 1]);
+	switch ($last_letter) {
 		case 'y':
-			return substr( $singular, 0, - 1 ) . 'ies';
+			return substr($singular, 0, -1) . 'ies';
 		case 's':
 			return $singular . 'es';
 		default:

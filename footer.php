@@ -1,11 +1,7 @@
 <div class="footer">
 	<div class="container">
+		<?php wp_footer(); ?>
 
-	</div>
-</div>
+		</body>
 
-<?php wp_footer(); ?>
-
-</body>
-
-</html>
+		</html>

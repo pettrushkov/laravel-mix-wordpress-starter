@@ -1,0 +1,89 @@
+.header {
+
+	&-menu-btn {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		cursor: pointer;
+		position: relative;
+		z-index: 6;
+		border: none;
+		margin-left: 16px;
+
+		@include mq(xl) {
+			display: none;
+		}
+
+		&.active {
+			span {
+				background-color: rgba($white, 0);
+
+				&,
+				&::before,
+				&::after {
+					border-radius: 3px;
+				}
+
+				&::before,
+				&::after {
+					top: 0;
+				}
+
+				&::before {
+					transform: rotate(45deg);
+				}
+
+				&::after {
+					transform: rotate(-45deg);
+				}
+			}
+		}
+
+		span {
+			display: block;
+			width: 25px;
+			height: 2px;
+			border-radius: 1px;
+			position: absolute;
+			background-color: $white;
+			z-index: 1;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			transition:
+				width $transition,
+				background-color $transition;
+
+			&,
+			&::before,
+			&::after {
+				transition: border-radius $transition;
+			}
+
+			&::before,
+			&::after {
+				content: " ";
+				display: block;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				background-color: $white;
+				transition:
+					transform $transition,
+					width $transition,
+					left $transition,
+					right $transition;
+			}
+
+			&::before {
+				top: -7px;
+				width: 100%;
+			}
+
+			&::after {
+				width: 100%;
+				bottom: -7px;
+			}
+		}
+	}
+}
